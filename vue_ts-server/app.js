@@ -17,7 +17,8 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-
+// 开启静态资源的访问
+app.use('/public/avatar', express.static('./public/avatar'));
 // 导入配置文件
 const config = require('./config/index');
 // 解析 token 的中间件

@@ -37,7 +37,7 @@ exports.getCheckCode = (req, res) => {
     ignoreChars: '0o1l',
     color: true,
     noise: 6,
-    background: '#cc9966',
+    background: '#aead5b',
     height: 32,
     width: 100
   });
@@ -45,7 +45,7 @@ exports.getCheckCode = (req, res) => {
   const uuid = req.query.uuid;
   const effectTime = 10 * 60;
   // 测试
-  console.log(captcha);
+  // console.log(captcha);
   // 存入redis
   redis
     .setKey(uuid, captcha.text.toLowerCase(), effectTime)
@@ -227,13 +227,15 @@ exports.getList = (req, res) => {
   if (error) throw error;
   // 接收前端参数
   let { pageSize, currentPage } = req.query;
+  console.log(req.query);
+  console.log(value);
   // 默认值
   limit = pageSize ? Number(pageSize) : 10;
   offset = currentPage ? Number(currentPage) : 1;
   offset = (offset - 1) * pageSize;
   let where = {};
-  let username = req.query.username;
-  let status = req.query.status;
+  let username = value.username;
+  let status = value.status;
   if (username) {
     where.username = { [Op.like]: `%${username}%` };
   }
@@ -243,6 +245,7 @@ exports.getList = (req, res) => {
   UsersModel.findAndCountAll({
     attributes: { exclude: ['password'] },
     include: [{ model: RolesModel }], // 预先加载角色模型
+    distinct: true,
     offset: offset,
     limit: limit,
     where: where

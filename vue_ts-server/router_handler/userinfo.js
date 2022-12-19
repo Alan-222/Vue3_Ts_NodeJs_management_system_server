@@ -83,6 +83,7 @@ exports.getUserinfo = async (req, res) => {
   }
   let role_ids = [];
   let role_names = [];
+  let buttons = [];
   // 获取该用户所拥有的角色
   user_roles.roles.forEach(function (item) {
     if (item.status) {
@@ -95,6 +96,10 @@ exports.getUserinfo = async (req, res) => {
   });
   // 根据角色id数组获取权限
   const resource = await getResource(role_ids);
+  // 将btns合并buttons数组
+  resource.buttons.forEach((button) => {
+    buttons = buttons.concat(button.btns);
+  });
   // 根据菜单id数组获取菜单详细信息
   const menus = await MenusModel.getListTree({ menu_id: resource.menu_ids });
   return res.send({
@@ -108,7 +113,7 @@ exports.getUserinfo = async (req, res) => {
       email: user_roles.email,
       avatar: user_roles.user_pic,
       menus: menus,
-      buttons: resource.buttons
+      buttons: buttons
     }
   });
 };

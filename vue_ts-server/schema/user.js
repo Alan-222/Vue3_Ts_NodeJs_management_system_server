@@ -77,5 +77,5 @@ exports.get_userInfoById_schema = joi.object().keys({
 });
 // 删除用户
 exports.delete_user_schema = joi.object().keys({
-  user_id
+  // user_id
 });
