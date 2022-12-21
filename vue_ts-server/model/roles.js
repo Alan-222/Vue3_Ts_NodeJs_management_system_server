@@ -86,11 +86,13 @@ RolesModel.getResource = async function (role_id) {
   const t = await sequelize.transaction();
   try {
     // 所有按钮的父id集合（重复）
-    let all_parent_ids = [];
+    // let all_parent_ids = [];
     // 所有按钮的父id（去除重复）
-    let parent_ids = [];
+    // let parent_ids = [];
+    // 所有按钮的id
+    let permIds = [];
     // 返回的按钮集合 按钮项格式为{menu_id:xx,btns:[xx,xx]}
-    const buttons = [];
+    // const buttons = [];
     // 获取角色菜单表中此角色id的所有记录
     const roleResource = await RolesMenusModel.findAll({
       where: { role_id: role_id }
@@ -110,25 +112,27 @@ RolesModel.getResource = async function (role_id) {
     // 将获取的按钮数组转化为对应的格式
     const btn_arr = all_menus.filter((menu) => menu.type === 'B');
     btn_arr.forEach((button) => {
-      all_parent_ids.push(button.parent_id);
+      // all_parent_ids.push(button.parent_id);
+      permIds.push(button.menu_id);
     });
-    parent_ids = Array.from(new Set(all_parent_ids));
-    parent_ids.forEach((item) => {
-      buttons.push({ menu_id: item, btns: [] });
-    });
-    btn_arr.forEach((button) => {
-      parent_ids.forEach((parent) => {
-        if (button.parent_id === parent) {
-          buttons.forEach((item) => {
-            if (item.menu_id === parent) item.btns.push(button.permission);
-          });
-        }
-      });
-    });
+    // parent_ids = Array.from(new Set(all_parent_ids));
+    // parent_ids.forEach((item) => {
+    //   buttons.push({ menu_id: item, btns: [] });
+    // });
+    // btn_arr.forEach((button) => {
+    //   parent_ids.forEach((parent) => {
+    //     if (button.parent_id === parent) {
+    //       buttons.forEach((item) => {
+    //         if (item.menu_id === parent) item.btns.push(button.permission);
+    //       });
+    //     }
+    //   });
+    // });
     t.commit();
     return {
       menu_ids,
-      buttons
+      // buttons,
+      permIds
     };
   } catch (e) {
     t.rollback();

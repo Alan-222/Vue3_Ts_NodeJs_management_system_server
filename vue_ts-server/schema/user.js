@@ -30,6 +30,7 @@ const status = joi.number().valid(0, 1);
 const pageSize = joi.number().required();
 const currentPage = joi.number().required();
 const role_ids = joi.array().items(joi.number()).required();
+const user_ids = [joi.array().items(joi.number()).required(), joi.number()];
 // 登录表单的验证规则对象
 exports.user_login_schema = joi.object().keys({
   username,
@@ -77,5 +78,5 @@ exports.get_userInfoById_schema = joi.object().keys({
 });
 // 删除用户
 exports.delete_user_schema = joi.object().keys({
-  // user_id
+  user_ids
 });

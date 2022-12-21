@@ -71,7 +71,8 @@ exports.getRoleResource = (req, res) => {
 exports.updateRoleResource = (req, res) => {
   const role_id = req.query.role_id;
   const data = req.body;
-  RoleModel.updateResource(role_id, data.menu_ids).then(function (resource) {
+  const all_ids = data.menu_ids.concat(data.permIds);
+  RoleModel.updateResource(role_id, all_ids).then(function (resource) {
     if (resource !== true) {
       return res.send({
         code: 1,

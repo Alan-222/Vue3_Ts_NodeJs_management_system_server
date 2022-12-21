@@ -20,7 +20,7 @@ const role_id = joi.number().integer().min(0).required();
 const remark = joi.string();
 const status = joi.number().valid(0, 1);
 // 角色id数组
-const role_ids = joi.array().items(joi.number()).required();
+const role_ids = [joi.array().items(joi.number()).required(), joi.number()];
 // 分页参数
 const pageSize = joi.number().required();
 const currentPage = joi.number().required();
