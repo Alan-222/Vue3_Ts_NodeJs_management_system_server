@@ -7,7 +7,8 @@ const {
   delete_role_schema,
   get_role_schema
 } = require('../schema/role');
-
+// 导入op模块
+const { Op } = require('sequelize');
 // 获取角色列表接口
 exports.getList = (req, res) => {
   const { value, error } = get_role_list_schema.validate(req.query);
