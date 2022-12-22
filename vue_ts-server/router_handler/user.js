@@ -308,7 +308,7 @@ exports.editUser = (req, res) => {
 exports.deleteUser = (req, res) => {
   const { value, error } = delete_user_schema.validate(req.body);
   if (error) throw error;
-  const user_ids = value.user_id;
+  const user_ids = value.user_ids;
   // console.log(user_ids);
   UsersModel.delUser(user_ids || []).then(function (user) {
     if (user !== true) {

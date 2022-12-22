@@ -15,7 +15,7 @@ joi = joi.defaults((schema) =>
  */
 // 菜单的校验规则
 const title = joi.string().required();
-const name = joi.string().alphanum().required();
+const name = joi.string().alphanum();
 const component = joi
   .string()
   .pattern(/^\/[^\s]*$/)
@@ -24,7 +24,7 @@ const path = joi.string().pattern(/^\/[^\s]*$/);
 const sort = joi.number().min(0).required();
 // 正则匹配相对路径
 const redirect = joi.string().pattern(/^\/[^\s]*$/);
-const permission = joi.string().alphanum();
+const permission = joi.string();
 const menu_id = joi.number().integer().min(0).required();
 const parent_id = joi.number().integer().min(0).required();
 const hidden = joi.number().valid(0, 1);
