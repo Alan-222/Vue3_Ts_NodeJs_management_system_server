@@ -40,6 +40,12 @@ app.use('/user/menu', menuRouter);
 // 导入用户信息路由模块
 const userinfoRouter = require('./router/userinfo');
 app.use('/user/myInfo', userinfoRouter);
+// 导入字典路由模块
+const dictRouter = require('./router/dict');
+app.use('/dict', dictRouter);
+// 导入字典项路由模块
+const dictItemRouter = require('./router/dict-items');
+app.use('/dict/item', dictItemRouter);
 // 定义错误级别的中间件
 app.use((err, req, res, next) => {
   // 数据验证失败
