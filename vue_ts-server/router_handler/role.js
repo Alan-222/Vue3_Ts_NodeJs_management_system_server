@@ -44,7 +44,7 @@ exports.getList = (req, res) => {
 exports.getAllRole = (req, res) => {
   RoleModel.findAll({
     where: {
-      status: 1
+      status: '1'
     }
   }).then(function (roles) {
     return res.send({

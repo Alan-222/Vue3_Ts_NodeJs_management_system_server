@@ -110,7 +110,7 @@ exports.login = async (req, res) => {
         message: '用户不存在',
         data: null
       });
-    } else if (result.status === 0) {
+    } else if (result.status === '0') {
       return res.send({
         code: 1,
         message: '帐号已停用',
@@ -239,7 +239,7 @@ exports.getList = (req, res) => {
   if (username) {
     where.username = { [Op.like]: `%${username}%` };
   }
-  if (status === 0 || status === 1) {
+  if (status === '0' || status === '1') {
     where.status = { [Op.eq]: status };
   }
   UsersModel.findAndCountAll({

@@ -18,7 +18,7 @@ const role_name = joi.string().min(1).max(10).required();
 // 定义 id, nickname, emial 的验证规则
 const role_id = joi.number().integer().min(0).required();
 const remark = joi.string();
-const status = joi.number().valid(0, 1);
+const status = joi.string().valid('0', '1');
 // 角色id数组
 const role_ids = [joi.array().items(joi.number()).required(), joi.number()];
 // 分页参数

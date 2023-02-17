@@ -16,7 +16,7 @@ const DictItemModel = sequelize.define('dict_items', {
     type: Sequelize.STRING(255)
   },
   item_value: {
-    type: Sequelize.INTEGER
+    type: Sequelize.STRING(255)
   },
   description: {
     type: Sequelize.STRING(255)
@@ -26,8 +26,8 @@ const DictItemModel = sequelize.define('dict_items', {
     defaultValue: 0
   },
   status: {
-    type: Sequelize.TINYINT,
-    defaultValue: 1
+    type: Sequelize.CHAR,
+    defaultValue: '1'
   },
   create_by: {
     type: Sequelize.STRING(32)

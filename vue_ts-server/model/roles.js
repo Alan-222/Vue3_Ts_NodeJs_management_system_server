@@ -19,8 +19,8 @@ const RolesModel = sequelize.define('roles', {
     type: Sequelize.STRING(255)
   },
   status: {
-    type: Sequelize.TINYINT,
-    defaultValue: 0
+    type: Sequelize.CHAR,
+    defaultValue: '1'
   },
   // menu_ids: {
   //   type: Sequelize.TEXT,

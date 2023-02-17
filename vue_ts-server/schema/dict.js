@@ -19,7 +19,7 @@ const dict_name = joi.string().min(1).max(10).required();
 const id = joi.number().integer().min(0).required();
 const dict_code = joi.string().required();
 const description = joi.string();
-const status = joi.number().valid(0, 1);
+const status = joi.string().valid('0', '1');
 // 字典id数组
 const dict_ids = [joi.array().items(joi.number()).required(), joi.number()];
 // 分页参数

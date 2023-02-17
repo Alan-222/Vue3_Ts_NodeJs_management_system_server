@@ -31,8 +31,8 @@ const UsersModel = sequelize.define('users', {
     type: Sequelize.TEXT
   },
   status: {
-    type: Sequelize.TINYINT(4),
-    defaultValue: 0
+    type: Sequelize.CHAR,
+    defaultValue: '1'
   },
   update_time: {
     type: Sequelize.DATE,

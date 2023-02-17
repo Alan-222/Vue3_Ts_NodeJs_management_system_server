@@ -17,10 +17,10 @@ joi = joi.defaults((schema) =>
 const id = joi.number().integer().min(0).required();
 const dict_id = joi.number().integer().min(0).required();
 const item_text = joi.string().required();
-const item_value = joi.number().min(0).required();
+const item_value = [joi.number().min(0).required(), joi.string().required()];
 const description = joi.string();
 const sort_order = joi.number().integer().min(0);
-const status = joi.number().valid(0, 1);
+const status = joi.string().valid('0', '1');
 // 字典项id数组
 const dictItem_ids = [joi.array().items(joi.number()).required(), joi.number().required()];
 
