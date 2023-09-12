@@ -1,8 +1,8 @@
-const Sequelize = require('sequelize');
+const Sequelize = require('sequelize')
 // 建立连接
 const sequelize = new Sequelize(
   // 以下内容根据自身修改
-  'vue_ts-database', // 数据库名
+  'react_antd_admin', // 数据库名
   'root', // 连接用户名
   '123456', // 密码
   {
@@ -14,6 +14,6 @@ const sequelize = new Sequelize(
     },
     timezone: '+08:00' // 东八时区
   }
-);
+)
 
-module.exports = sequelize;
+module.exports = sequelize
