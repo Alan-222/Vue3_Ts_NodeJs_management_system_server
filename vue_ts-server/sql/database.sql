@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 80029
  Source Host           : localhost:3306
- Source Schema         : react_antd_admin
+ Source Schema         : react-antd-admin
 
  Target Server Type    : MySQL
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 20/10/2023 14:57:29
+ Date: 06/11/2023 18:48:58
 */
 
 SET NAMES utf8mb4;
@@ -97,10 +97,10 @@ CREATE TABLE `menus`  (
 -- ----------------------------
 -- Records of menus
 -- ----------------------------
-INSERT INTO `menus` VALUES (1, 40, '用户管理', 1, 'M', 'user', '/System/User/User', 'user', '/system/user', NULL, '0', '2023-09-08 11:27:44', '2023-08-24 09:49:46');
-INSERT INTO `menus` VALUES (2, 40, '角色管理', 2, 'M', 'peoples', '/System/Role/Role', 'role', '/system/role', NULL, '0', '2023-09-08 11:28:04', '2023-08-24 09:50:23');
-INSERT INTO `menus` VALUES (3, 40, '权限管理', 3, 'M', 'list', '/System/Menu/Menu', 'menu', '/system/menu', NULL, '0', '2023-09-13 16:08:02', '2023-08-24 09:50:46');
-INSERT INTO `menus` VALUES (40, 0, '系统管理', 1, 'C', 'system', 'Layout', 'system', '/system', NULL, '0', NULL, '2023-09-05 17:29:59');
+INSERT INTO `menus` VALUES (1, 40, '用户管理', 1, 'M', 'user', '/System/User', 'user', '', NULL, '0', '2023-09-08 11:27:44', '2023-08-24 09:49:46');
+INSERT INTO `menus` VALUES (2, 40, '角色管理', 2, 'M', 'peoples', '/System/Role', 'role', '', NULL, '0', '2023-09-08 11:28:04', '2023-08-24 09:50:23');
+INSERT INTO `menus` VALUES (3, 40, '权限管理', 3, 'M', 'list', '/System/Menu', 'menu', '', NULL, '0', '2023-09-13 16:08:02', '2023-08-24 09:50:46');
+INSERT INTO `menus` VALUES (40, 0, '系统管理', 1, 'C', 'system', 'Layout', 'system', '/system/user', NULL, '0', NULL, '2023-09-05 17:29:59');
 INSERT INTO `menus` VALUES (41, 1, '用户新增', 1, 'B', NULL, NULL, NULL, NULL, 'system:user:add', '0', NULL, '2023-09-06 10:48:31');
 INSERT INTO `menus` VALUES (42, 1, '用户编辑', 2, 'B', NULL, NULL, NULL, NULL, 'system:user:edit', '0', NULL, '2023-09-06 10:49:00');
 INSERT INTO `menus` VALUES (43, 1, '用户删除', 3, 'B', NULL, NULL, NULL, NULL, 'system:user:del', '0', NULL, '2023-09-06 10:49:17');
@@ -113,9 +113,9 @@ INSERT INTO `menus` VALUES (49, 3, '菜单编辑', 2, 'B', NULL, NULL, NULL, NUL
 INSERT INTO `menus` VALUES (50, 3, '菜单删除', 3, 'B', NULL, NULL, NULL, NULL, 'system:menu:del', '0', NULL, '2023-09-07 11:33:41');
 INSERT INTO `menus` VALUES (51, 1, '重置密码', 4, 'B', NULL, NULL, NULL, NULL, 'system:user:resetPwd', '0', NULL, '2023-09-07 15:33:38');
 INSERT INTO `menus` VALUES (52, 0, '自定义多级菜单', 2, 'C', 'tree-table', 'Layout', 'custom', '/custom', NULL, '0', NULL, '2023-09-08 11:16:09');
-INSERT INTO `menus` VALUES (53, 52, '测试菜单一', 1, 'M', 'example', '/Custom/Test1/Test1', 'test1', '/custom/test1', NULL, '0', NULL, '2023-09-08 14:45:13');
-INSERT INTO `menus` VALUES (54, 52, '测试菜单二', 1, 'C', 'example', 'Layout', 'test2', '/custom/test2', NULL, '0', NULL, '2023-09-08 14:46:37');
-INSERT INTO `menus` VALUES (55, 54, '测试菜单三', 1, 'M', 'example', '/Custom/Test2/Test3/Test3', 'test3', '/custom/test2/test3', NULL, '0', NULL, '2023-09-08 14:47:19');
+INSERT INTO `menus` VALUES (53, 52, '测试菜单一', 1, 'M', 'example', '/Custom/Test1', 'test1', '', NULL, '0', NULL, '2023-09-08 14:45:13');
+INSERT INTO `menus` VALUES (54, 52, '测试菜单二', 1, 'C', 'example', 'Layout', 'test2', '', NULL, '0', NULL, '2023-09-08 14:46:37');
+INSERT INTO `menus` VALUES (55, 54, '测试菜单三', 1, 'M', 'example', '/Custom/Test2/Test3', 'test3', '', NULL, '0', NULL, '2023-09-08 14:47:19');
 
 -- ----------------------------
 -- Table structure for roles
@@ -189,7 +189,7 @@ CREATE TABLE `user_logs`  (
   `ua` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'ua标识',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '登录时间',
   PRIMARY KEY (`user_log_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of user_logs
