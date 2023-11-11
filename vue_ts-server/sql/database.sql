@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 06/11/2023 18:48:58
+ Date: 11/11/2023 16:11:01
 */
 
 SET NAMES utf8mb4;
@@ -97,9 +97,9 @@ CREATE TABLE `menus`  (
 -- ----------------------------
 -- Records of menus
 -- ----------------------------
-INSERT INTO `menus` VALUES (1, 40, '用户管理', 1, 'M', 'user', '/System/User', 'user', '', NULL, '0', '2023-09-08 11:27:44', '2023-08-24 09:49:46');
-INSERT INTO `menus` VALUES (2, 40, '角色管理', 2, 'M', 'peoples', '/System/Role', 'role', '', NULL, '0', '2023-09-08 11:28:04', '2023-08-24 09:50:23');
-INSERT INTO `menus` VALUES (3, 40, '权限管理', 3, 'M', 'list', '/System/Menu', 'menu', '', NULL, '0', '2023-09-13 16:08:02', '2023-08-24 09:50:46');
+INSERT INTO `menus` VALUES (1, 40, '用户管理', 1, 'M', 'user', '/System/User', 'user', NULL, NULL, '0', '2023-09-08 11:27:44', '2023-08-24 09:49:46');
+INSERT INTO `menus` VALUES (2, 40, '角色管理', 2, 'M', 'peoples', '/System/Role', 'role', NULL, NULL, '0', '2023-09-08 11:28:04', '2023-08-24 09:50:23');
+INSERT INTO `menus` VALUES (3, 40, '权限管理', 3, 'M', 'list', '/System/Auth', 'menu', NULL, NULL, '0', '2023-09-13 16:08:02', '2023-08-24 09:50:46');
 INSERT INTO `menus` VALUES (40, 0, '系统管理', 1, 'C', 'system', 'Layout', 'system', '/system/user', NULL, '0', NULL, '2023-09-05 17:29:59');
 INSERT INTO `menus` VALUES (41, 1, '用户新增', 1, 'B', NULL, NULL, NULL, NULL, 'system:user:add', '0', NULL, '2023-09-06 10:48:31');
 INSERT INTO `menus` VALUES (42, 1, '用户编辑', 2, 'B', NULL, NULL, NULL, NULL, 'system:user:edit', '0', NULL, '2023-09-06 10:49:00');
@@ -108,14 +108,14 @@ INSERT INTO `menus` VALUES (44, 2, '角色新增', 1, 'B', NULL, NULL, NULL, NUL
 INSERT INTO `menus` VALUES (45, 2, '角色编辑', 2, 'B', NULL, NULL, NULL, NULL, 'system:role:edit', '0', NULL, '2023-09-07 11:30:43');
 INSERT INTO `menus` VALUES (46, 2, '角色删除', 3, 'B', NULL, NULL, NULL, NULL, 'system:role:del', '0', NULL, '2023-09-07 11:31:14');
 INSERT INTO `menus` VALUES (47, 2, '分配角色权限', 4, 'B', NULL, NULL, NULL, NULL, 'system:role:assignAuth', '0', NULL, '2023-09-07 11:32:30');
-INSERT INTO `menus` VALUES (48, 3, '菜单新增', 1, 'B', NULL, NULL, NULL, NULL, 'system:menu:add', '0', NULL, '2023-09-07 11:33:05');
-INSERT INTO `menus` VALUES (49, 3, '菜单编辑', 2, 'B', NULL, NULL, NULL, NULL, 'system:menu:edit', '0', NULL, '2023-09-07 11:33:23');
-INSERT INTO `menus` VALUES (50, 3, '菜单删除', 3, 'B', NULL, NULL, NULL, NULL, 'system:menu:del', '0', NULL, '2023-09-07 11:33:41');
+INSERT INTO `menus` VALUES (48, 3, '权限新增', 1, 'B', NULL, NULL, NULL, NULL, 'system:auth:add', '0', NULL, '2023-09-07 11:33:05');
+INSERT INTO `menus` VALUES (49, 3, '权限编辑', 2, 'B', NULL, NULL, NULL, NULL, 'system:auth:edit', '0', NULL, '2023-09-07 11:33:23');
+INSERT INTO `menus` VALUES (50, 3, '权限删除', 3, 'B', NULL, NULL, NULL, NULL, 'system:auth:del', '0', NULL, '2023-09-07 11:33:41');
 INSERT INTO `menus` VALUES (51, 1, '重置密码', 4, 'B', NULL, NULL, NULL, NULL, 'system:user:resetPwd', '0', NULL, '2023-09-07 15:33:38');
-INSERT INTO `menus` VALUES (52, 0, '自定义多级菜单', 2, 'C', 'tree-table', 'Layout', 'custom', '/custom', NULL, '0', NULL, '2023-09-08 11:16:09');
-INSERT INTO `menus` VALUES (53, 52, '测试菜单一', 1, 'M', 'example', '/Custom/Test1', 'test1', '', NULL, '0', NULL, '2023-09-08 14:45:13');
-INSERT INTO `menus` VALUES (54, 52, '测试菜单二', 1, 'C', 'example', 'Layout', 'test2', '', NULL, '0', NULL, '2023-09-08 14:46:37');
-INSERT INTO `menus` VALUES (55, 54, '测试菜单三', 1, 'M', 'example', '/Custom/Test2/Test3', 'test3', '', NULL, '0', NULL, '2023-09-08 14:47:19');
+INSERT INTO `menus` VALUES (52, 0, '自定义多级菜单', 2, 'C', 'tree-table', 'Layout', 'custom', '/custom/test1', NULL, '0', NULL, '2023-09-08 11:16:09');
+INSERT INTO `menus` VALUES (53, 52, '测试菜单一', 1, 'M', 'example', '/Custom/Test1', 'test1', NULL, NULL, '0', NULL, '2023-09-08 14:45:13');
+INSERT INTO `menus` VALUES (54, 52, '测试菜单二', 1, 'C', 'example', 'Layout', 'test2', '/custom/test2/test3', NULL, '0', NULL, '2023-09-08 14:46:37');
+INSERT INTO `menus` VALUES (55, 54, '测试菜单三', 1, 'M', 'example', '/Custom/Test2/Test3', 'test3', NULL, NULL, '0', NULL, '2023-09-08 14:47:19');
 
 -- ----------------------------
 -- Table structure for roles
@@ -215,7 +215,7 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'Alan', '$2a$10$YguL/VrthrkxhdDd4su56OfS.eDKL0Be6ZpelQYhzQ/06/vsk4mdS', '艾伦', 'alan@gmail.com', 'public\\avatar\\pikaqiu_1.jpg', '1', '2023-08-24 10:15:32', '2023-08-31 17:12:53');
+INSERT INTO `users` VALUES (1, 'Alan', '$2a$10$X8gGVZ/RN7wNGNxd0kyYW.yUSJW2XHNxA9lAAUlB4qkVKDaX41hiG', '艾伦儿', 'alan@gmail.com', 'public\\avatar\\pikaqiu_1.jpg', '1', '2023-08-24 10:15:32', '2023-11-11 14:33:08');
 
 -- ----------------------------
 -- Table structure for users_roles
