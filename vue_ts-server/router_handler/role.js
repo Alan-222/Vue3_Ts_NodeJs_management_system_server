@@ -22,14 +22,11 @@ exports.getList = (req, res, next) => {
   offset = currentPage ? Number(currentPage) : 1
   offset = (offset - 1) * pageSize
   let where = {}
-  let role_name = value.role_name
-  let status = value.status
-  if (role_name) {
-    where.role_name = { [Op.like]: `%${role_name}%` }
-  }
-  if (status) {
-    where.status = { [Op.eq]: status }
-  }
+  const { role_name, status } = value
+  if (role_name) where.role_name = { [Op.like]: `%${role_name}%` }
+
+  if (status) where.status = { [Op.eq]: status }
+
   RoleModel.findAndCountAll({
     offset: offset,
     limit: limit,

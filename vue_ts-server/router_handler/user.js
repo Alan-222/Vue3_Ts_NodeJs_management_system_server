@@ -234,15 +234,13 @@ exports.getList = (req, res, next) => {
   limit = pageSize ? Number(pageSize) : 10
   offset = currentPage ? Number(currentPage) : 1
   offset = (offset - 1) * pageSize
+  const { username, nickname, email, status } = value
   let where = {}
-  let username = value.username
-  let status = value.status
-  if (username) {
-    where.username = { [Op.like]: `%${username}%` }
-  }
-  if (status === '0' || status === '1') {
-    where.status = { [Op.eq]: status }
-  }
+  if (username) where.username = { [Op.like]: `%${username}%` }
+  if (nickname) where.nickname = nickname
+  if (email) where.email = email
+  if (status === '0' || status === '1') where.status = { [Op.eq]: status }
+
   UsersModel.findAndCountAll({
     attributes: { exclude: ['password'] },
     include: [{ model: RolesModel }], // 预先加载角色模型

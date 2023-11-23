@@ -63,29 +63,22 @@ const MenusModel = sequelize.define('menus', {
   }
 })
 // 获得权限的树状数据结构
-MenusModel.getListTree = async function (where = {}) {
+MenusModel.getListTree = async function (params = {}) {
   let menus = []
+  let where = {}
   // 查询数据库获得元数据
-  if (where.title) {
-    menus = await MenusModel.findAll({
-      where: {
-        title: {
-          [Op.like]: `%${where.title}%`
-        }
-      },
-      order: [['sort']]
-    })
-  } else if (where.menu_id) {
-    menus = await MenusModel.findAll({
-      where: {
-        menu_id: where.menu_id
-      }
-    })
-  } else {
-    menus = await MenusModel.findAll({
-      order: [['sort']]
-    })
-  }
+  const { title, type, path, menu_id } = params
+  if (title)
+    where.title = {
+      [Op.like]: `%${title}%`
+    }
+  if (type) where.type = type
+  if (path) where.path = path
+  if (menu_id) where.menu_id = menu_id
+  menus = await MenusModel.findAll({
+    where: where,
+    order: [['sort']]
+  })
   // 将元数据转换为单纯的数据集
   const menusArr = menus.map(function (item) {
     return item.get({ plain: true })
