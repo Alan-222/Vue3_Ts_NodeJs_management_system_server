@@ -32,6 +32,7 @@ const getTreeData = function (data, level = null, idField = 'menu_id', pidField 
         if (_level.includes(item[idField])) prefixPath += '/' + item.path
         const childData = getTreeInnerData(data, item[idField], idField, pidField)
         if (childData != null) {
+          item['menuPath'] = prefixPath
           item['children'] = childData
           prefixPath = ''
         } else {
