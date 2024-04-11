@@ -156,6 +156,14 @@ exports.deleteMenu = (req, res, next) => {
   if (error) {
     return next(error)
   }
+  const { menu_id }=value
+  const noDeleteMenuIds=[1,2,3,40,41,42,43,44,45,46,47,48,49,50,51]
+  if (noDeleteMenuIds.includes(menu_id))
+    return res.send({
+      code: 1,
+      message: '配置权限菜单不可删除',
+      data: null
+    })
   MenusModel.deleteMenu(value.menu_id).then(function (menu) {
     if (menu === true) {
       return res.send({

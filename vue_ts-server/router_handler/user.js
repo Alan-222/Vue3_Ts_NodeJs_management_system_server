@@ -312,7 +312,12 @@ exports.deleteUser = (req, res, next) => {
     return next(error)
   }
   const user_ids = value.user_ids
-  // console.log(user_ids);
+  if ((user_ids.length && user_ids.includes(1)) || user_ids === 1)
+    return res.send({
+      code: 1,
+      message: '超级管理员测试账号不可删除',
+      data: null
+    })
   UsersModel.delUser(user_ids || []).then(function (user) {
     if (user !== true) {
       return res.send({

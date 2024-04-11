@@ -162,6 +162,12 @@ exports.deleteRole = (req, res, next) => {
     return next(error)
   }
   const role_ids = value.role_ids
+  if ((role_ids.length && role_ids.includes(1)) || role_ids === 1)
+    return res.send({
+      code: 1,
+      message: '超级管理员角色不可删除',
+      data: null
+    })
   RoleModel.delRole(role_ids || []).then(function (role) {
     if (role !== true) {
       return res.send({
