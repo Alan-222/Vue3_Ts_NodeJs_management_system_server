@@ -29,7 +29,9 @@ app.use(
     path: ['/user/login', '/user/checkCode', '/user/refreshToken', '/user/addUser']
   })
 )
-
+// 导入并注册仪表盘模块
+const dashboardRouter = require('./router/dashboard')
+app.use('/dashboard', dashboardRouter)
 // 导入并注册用户路由模块
 const userRouter = require('./router/user')
 app.use('/user', userRouter)
